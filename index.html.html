@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menu Selection</title>
+<style>
+:root{--ink:#20382f;--muted:#617168;--accent:#315d49;--paper:#fff;--wash:#f3f7f4;--line:#d9e3dc}
+*{box-sizing:border-box} body{margin:0;background:#eef3ef;color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+main{max-width:760px;margin:28px auto;padding:0 16px 36px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:clamp(18px,4vw,34px);box-shadow:0 8px 28px #20382f0d}
+header{text-align:center;margin-bottom:24px} .eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;font-weight:800;color:var(--accent)}
+h1{font-size:clamp(2rem,5vw,2.8rem);line-height:1.1;margin:8px 0;color:var(--ink)} header p{color:var(--muted);margin:0}
+.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:22px}
+label.field{display:block;font-weight:650;font-size:.9rem} input[type=text],input[type=email],textarea{width:100%;margin-top:5px;padding:11px 12px;border:1px solid #bdcbc1;border-radius:9px;font:inherit;background:white;color:var(--ink)}
+fieldset{border:0;padding:0;margin:22px 0 0;min-width:0} legend{font-size:1.15rem;font-weight:800;margin-bottom:10px}
+.hint{font-size:.85rem;color:var(--muted);font-weight:500;margin-left:6px}
+.options{display:grid;gap:9px}
+.option{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:13px 14px;cursor:pointer;transition:border-color .15s,background .15s}
+.option:has(input:checked){border-color:var(--accent);background:#edf5ef}
+.option input{accent-color:var(--accent);width:18px;height:18px;margin:3px 0 0;flex-shrink:0}
+.option strong{display:block;font-size:.98rem}.option span{display:block;color:var(--muted);font-size:.9rem;margin-top:2px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+button{border:0;border-radius:10px;padding:12px 17px;font:inherit;font-weight:750;cursor:pointer}
+.primary{background:var(--accent);color:white}.secondary{background:var(--wash);color:var(--ink);border:1px solid var(--line)}
+.note{font-size:.84rem;color:var(--muted);margin-top:16px}.status{display:none;margin-top:16px;padding:12px;border-radius:10px;background:var(--wash)}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:18px}
+@media(max-width:560px){.field-grid{grid-template-columns:1fr}.card{border-radius:14px}}
+</style>
+</head>
+<body>
+<main>
+<div class="card">
+<header>
+<div class="eyebrow">Your meal choices</div>
+<h1>Menu Selection</h1>
+<p>Please complete your details and select one option in each course.</p>
+</header>
+<form id="menuForm">
+<div class="field-grid">
+<label class="field">Guest name *<input name="guestName" type="text" autocomplete="name" required placeholder="Your full name"></label>
+<label class="field">Your email *<input name="guestEmail" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+<label class="field">Event / table (optional)<input name="event" type="text" placeholder="Event or table name"></label>
+<label class="field">Organiser's email *<input name="organiserEmail" type="email" required placeholder="organiser@example.com"></label>
+</div>
+
+<fieldset><legend>1. Starter <span class="hint">Choose one</span></legend><div class="options">
+<label class="option"><input type="radio" name="starter" value="Minced Beef Samosas" required><div><strong>Minced Beef Samosas</strong><span>Tamarind yoghurt dip &amp; chutney</span></div></label>
+<label class="option"><input type="radio" name="starter" value="Supu ya Malenge (creamy pumpkin soup)"><div><strong>Supu ya Malenge</strong><span>Creamy pumpkin soup served with bread rolls</span></div></label>
+</div></fieldset>
+
+<fieldset><legend>2. Main course <span class="hint">Choose one</span></legend><div class="options">
+<label class="option"><input type="radio" name="main" value="Grilled Chicken Leg" required><div><strong>Grilled Chicken Leg</strong><span>Chicken gravy, roast potatoes and mixed vegetables</span></div></label>
+<label class="option"><input type="radio" name="main" value="Mbuzi Wet Fry"><div><strong>Mbuzi Wet Fry</strong><span>Goat meat on the bone in a tomato, onion, garlic &amp; ginger stew, served with rice and sukumawiki (kale, onions, tomato, garlic &amp; spices)</span></div></label>
+<label class="option"><input type="radio" name="main" value="Grilled Salmon Fillet"><div><strong>Grilled Salmon Fillet</strong><span>Hollandaise sauce and capers, new potatoes, mixed vegetables and a wedge of lemon</span></div></label>
+</div></fieldset>
+
+<fieldset><legend>3. Dessert <span class="hint">Choose one</span></legend><div class="options">
+<label class="option"><input type="radio" name="dessert" value="Tropical Fruit Salad" required><div><strong>Tropical Fruit Salad</strong><span>Mango, papaya, watermelon, apple, pear &amp; strawberries, served with vanilla ice cream</span></div></label>
+<label class="option"><input type="radio" name="dessert" value="Victoria Sponge Cake"><div><strong>Victoria Sponge Cake</strong><span>Served with strawberries &amp; vanilla ice cream</span></div></label>
+</div></fieldset>
+
+<fieldset><legend>4. To finish</legend><div class="options">
+<label class="option"><input type="radio" name="finish" value="Freshly brewed coffee" required><div><strong>Freshly brewed coffee</strong><span>Served with chocolate mints</span></div></label>
+<label class="option"><input type="radio" name="finish" value="Tea" ><div><strong>Tea</strong><span>Served with chocolate mints</span></div></label>
+</div></fieldset>
+
+<fieldset><legend>Dietary requirements <span class="hint">Optional</span></legend>
+<label class="field" for="dietary">Allergies or dietary notes</label>
+<textarea id="dietary" name="dietary" rows="3" placeholder="Please list any allergies or dietary requirements"></textarea>
+</fieldset>
+
+<div class="actions">
+<button class="primary" type="submit">Email my menu choices ↗</button>
+<button class="secondary" type="button" id="previewBtn">Preview response</button>
+<button class="secondary" type="reset">Clear form</button>
+</div>
+<div class="status" id="status" role="status" aria-live="polite"></div>
+<p class="note">When you submit, your email app will open with your selections filled in. Please review and press <b>Send</b>. This form does not send or store your information by itself.</p>
+</form>
+</div>
+<footer>Menu selection form · One choice per course</footer>
+</main>
+<script>
+const form = document.getElementById('menuForm');
+const statusBox = document.getElementById('status');
+function getData(){
+ const fd = new FormData(form);
+ return {
+  name:fd.get('guestName')||'', email:fd.get('guestEmail')||'', event:fd.get('event')||'',
+  organiser:fd.get('organiserEmail')||'', starter:fd.get('starter')||'', main:fd.get('main')||'',
+  dessert:fd.get('dessert')||'', finish:fd.get('finish')||'', dietary:fd.get('dietary')||''
+ };
+}
+function makeBody(d){
+ return `Menu selection\\n\\nGuest: ${d.name}\\nGuest email: ${d.email}\\nEvent / table: ${d.event||'Not provided'}\\n\\nSTARTER\\n${d.starter}\\n\\nMAIN COURSE\\n${d.main}\\n\\nDESSERT\\n${d.dessert}\\n\\nTO FINISH\\n${d.finish}\\n\\nDIETARY REQUIREMENTS\\n${d.dietary||'None provided'}\\n`;
+}
+document.getElementById('previewBtn').addEventListener('click',()=>{
+ if(!form.reportValidity()) return;
+ const d=getData();
+ statusBox.style.display='block';
+ statusBox.textContent=makeBody(d);
+});
+form.addEventListener('submit',(e)=>{
+ e.preventDefault();
+ if(!form.reportValidity()) return;
+ const d=getData();
+ const subject=encodeURIComponent(`Menu selection - ${d.name}`);
+ const body=encodeURIComponent(makeBody(d));
+ window.location.href=`mailto:${encodeURIComponent(d.organiser)}?subject=${subject}&body=${body}`;
+ statusBox.style.display='block';
+ statusBox.textContent='Your email app should open with the completed menu. Check the details and press Send to return it to the organiser.';
+});
+</script>
+</body>
+</html>
